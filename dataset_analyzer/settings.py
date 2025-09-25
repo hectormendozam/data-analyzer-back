@@ -4,7 +4,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-fallback-key-change-in-production')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'clave-123')
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 ALLOWED_HOSTS = [
@@ -97,7 +97,12 @@ REST_FRAMEWORK = {
 }
 
 # CORS settings - CORREGIDO
-CORS_ALLOW_ALL_ORIGINS = True  # Temporal para debugging
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    "https://data-analyzer-frontend.onrender.com",
+    "http://localhost:3000",
+]
+
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = [
     'accept',
