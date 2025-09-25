@@ -141,3 +141,50 @@ CSRF_TRUSTED_ORIGINS = [
     "https://data-analyzer-frontend.onrender.com",
     "https://data-analyzer-backend-htwl.onrender.com",
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://data-analyzer-frontend.onrender.com",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+# Headers adicionales que pueden ser necesarios
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    'access-control-allow-origin',
+]
+
+# Métodos HTTP permitidos
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+# Permitir credentials
+CORS_ALLOW_CREDENTIALS = True
+
+# Configuración adicional para preflight requests
+CORS_PREFLIGHT_MAX_AGE = 86400
+
+# Para debugging - puedes activar esto temporalmente
+# CORS_ALLOW_ALL_ORIGINS = True  # Solo para testing
+
+# También asegurar que los hosts están correctos
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'data-analyzer-backend-htwl.onrender.com',
+    '.onrender.com',
+]
