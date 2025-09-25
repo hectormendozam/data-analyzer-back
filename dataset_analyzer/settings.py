@@ -5,7 +5,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'clave-123')
 DEBUG = False  # Cambiar a False en producción
-ALLOWED_HOSTS = ['localhost', 'data-analyzer-backend-htwl.onrender.com', '.onrender.com']
 
 # IMPORTANTE: Verificar que data_analysis esté incluida
 INSTALLED_APPS = [
@@ -90,52 +89,55 @@ REST_FRAMEWORK = {
     ]
 }
 
-# Configuración CORS - IMPORTANTE para conectar con React
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
-    "https://data-analyzer-frontend.onrender.com",  # Tu frontend actual
-    "http://localhost:3000",  # Para desarrollo local
+    "https://data-analyzer-frontend.onrender.com",
+    "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
 
-# Internacionalización
-LANGUAGE_CODE = 'es-es'
-TIME_ZONE = 'America/Mexico_City'
-USE_I18N = True
-USE_TZ = True
+# Headers adicionales que pueden ser necesarios
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    'access-control-allow-origin',
+]
 
-# Configuración de archivos
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Métodos HTTP permitidos
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# Permitir credentials
+CORS_ALLOW_CREDENTIALS = True
 
-# Límites de archivo
-FILE_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024  # 50MB
-DATA_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024  # 50MB
+# Configuración adicional para preflight requests
+CORS_PREFLIGHT_MAX_AGE = 86400
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Para debugging - puedes activar esto temporalmente
+# CORS_ALLOW_ALL_ORIGINS = True  # Solo para testing
 
-# Configuración de logging
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'INFO',
-    },
-    'loggers': {
-        'data_analysis': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': False,
-        },
-    },
-}
+# También asegurar que los hosts están correctos
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'data-analyzer-backend-htwl.onrender.com',
+    '.onrender.com',
+]
+
+# Configuración adicional para CSRF
+CSRF_TRUSTED_ORIGINS = [
+    "https://data-analyzer-frontend.onrender.com",
+    "https://data-analyzer-backend-htwl.onrender.com",
+]
