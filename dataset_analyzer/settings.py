@@ -3,9 +3,9 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-tu-clave-secreta-para-desarrollo-cambiar-en-produccion')
-DEBUG = True  # Cambiar a False en producción
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
+SECRET_KEY = os.environ.get('SECRET_KEY', 'clave-123')
+DEBUG = False  # Cambiar a False en producción
+ALLOWED_HOSTS = ['localhost', 'https://data-analyzer-backend-htwl.onrender.com/', '*']
 
 # IMPORTANTE: Verificar que data_analysis esté incluida
 INSTALLED_APPS = [
@@ -94,8 +94,8 @@ REST_FRAMEWORK = {
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
+    "https://data-analyzer-frontend.onrender.com/",
     "http://localhost:3000",
-    "http://127.0.0.1:3000",
 ]
 
 # Internacionalización
