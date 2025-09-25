@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'clave-123')
 DEBUG = False  # Cambiar a False en producción
-ALLOWED_HOSTS = ['localhost', 'https://data-analyzer-backend-htwl.onrender.com', '*']
+ALLOWED_HOSTS = ['localhost', 'data-analyzer-backend-htwl.onrender.com', '.onrender.com']
 
 # IMPORTANTE: Verificar que data_analysis esté incluida
 INSTALLED_APPS = [
@@ -94,8 +94,9 @@ REST_FRAMEWORK = {
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
-    "https://data-analyzer-frontend.onrender.com",
-    "http://localhost:3000",
+    "https://data-analyzer-frontend.onrender.com",  # Tu frontend actual
+    "http://localhost:3000",  # Para desarrollo local
+    "http://127.0.0.1:3000",
 ]
 
 # Internacionalización
